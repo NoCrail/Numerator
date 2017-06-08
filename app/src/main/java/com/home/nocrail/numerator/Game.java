@@ -1,18 +1,35 @@
 package com.home.nocrail.numerator;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
 public class Game extends AppCompatActivity {
 
+    public int a = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+         View.OnClickListener click = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ili = ((Button) v).getText().toString();
+                if(Integer.parseInt(ili)==a){
+                    v.setEnabled(false);
+                    a++;
+                }
+            }
+        };
 
             Button btn[] = {(Button)findViewById(R.id.but1), (Button)findViewById(R.id.but2),
                     (Button)findViewById(R.id.but3), (Button)findViewById(R.id.but4),
@@ -30,26 +47,32 @@ public class Game extends AppCompatActivity {
                     (Button)findViewById(R.id.but28), (Button)findViewById(R.id.but29),
                     (Button)findViewById(R.id.but30), (Button)findViewById(R.id.but31),
             };
-        /*int[] num = new int[31];
-        int r; int sum = 0; int i = 1;
-        Random random = new Random();
-        /*for (int i =0; i<30; i++ ){
-            r = random.nextInt(30);
 
+        //btn[0].setEnabled(false);
+        ArrayList<Byte> kek = new ArrayList<>();
+        for(Byte i = 1; i<=btn.length; i++){
+            kek.add(i-1, i);
+
+        };
+        for(Byte i = 0; i<btn.length; i++){
+            btn[i].setOnClickListener(click);
+        };
+        Random rand = new Random();
+        for(Byte i = 0; i<btn.length; i++){
+            int r = rand.nextInt(kek.size());
+            btn[i].setText(String.valueOf(kek.get(r)));
+            kek.remove(r);
         }
-        while (sum!=2247){
-            r = random.nextInt(30);
-            if (btn[r].getText()== "button"){
-                btn[r].setText(i);
-                sum+=i;
-                i++;
-            }
-        }*/
 
+
+        //Toast.makeText(this, "Kek", Toast.LENGTH_SHORT).show();
 
 
 
 
     }
 
+
+
 }
+
