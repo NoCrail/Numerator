@@ -11,7 +11,7 @@
     <string name="HideCheck">Hide pressed</string>
     <string name="RotationCheck">Rotate</string>
     <string-array name="Lines">
-        <item>1</item>
+        <item>1 </item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
@@ -20,4 +20,5 @@
         <item>7</item>
         <item>8</item>
     </string-array>
+    <string name="Lines">Lines</string>
 </resources>

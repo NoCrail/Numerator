@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
     public static boolean color = false;
     public static boolean hide = false;
     public static boolean rotate = false;
+    public static int lines  = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button start = (Button)findViewById(R.id.start);
         Button about = (Button)findViewById(R.id.about);
+
+        final Spinner spin = (Spinner)findViewById(R.id.spinner);
 
 
         about.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent start = new Intent(MainActivity.this, Game.class);
                 hide = hidecheck.isChecked();
                 color = colorcheck.isChecked();
-
+                String t = spin.getSelectedItem().toString();
+                lines = Integer.parseInt(t);
                 startActivity(start);
 
             }
