@@ -96,16 +96,17 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:text="@string/Lines"
-        android:textColor="BLACK"
+
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HideCheck" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/hinttimespin"
         android:layout_width="116dp"
         android:layout_height="34dp"
         android:layout_marginLeft="0dp"
+        android:entries="@array/Hint"
         android:layout_marginTop="8dp"
         app:layout_constraintLeft_toRightOf="@+id/checkHint"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />

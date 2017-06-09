@@ -21,5 +21,11 @@
         <item>8</item>
     </string-array>
     <string name="Lines">Lines</string>
+    <string-array name="Hint">
+        <item>3</item>
+        <item>5</item>
+        <item>7</item>
+        <item>10</item>
+    </string-array>
     <string name="HintCheck">Hint enabled</string>
 </resources>
