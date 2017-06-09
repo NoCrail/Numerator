@@ -3,4 +3,10 @@
     <string name="app_name">Numerator</string>
     <string name="start">Начать</string>
     <string name="about">О программе</string>
+    <string name="end">Завершено</string>
+    <string name="Time">Время</string>
+    <string name="Sec">Сек.</string>
+    <string name="ColorCheck">Включить цвета</string>
+    <string name="HideCheck">Убирать нажатые</string>
+    <string name="RotationCheck">Перемешивать</string>
 </resources>
