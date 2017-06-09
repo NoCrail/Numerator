@@ -21,6 +21,8 @@ import static android.R.attr.id;
 import static com.home.nocrail.numerator.MainActivity.color;
 import static com.home.nocrail.numerator.MainActivity.hide;
 import static com.home.nocrail.numerator.MainActivity.lines;
+import static com.home.nocrail.numerator.MainActivity.hint;
+import static com.home.nocrail.numerator.MainActivity.htime;
 
 
 public class Game extends AppCompatActivity {
@@ -68,20 +70,23 @@ public class Game extends AppCompatActivity {
         chrono.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
-                long elapsedMillis = SystemClock.elapsedRealtime()-chrono.getBase();
+                long elapsedMillis = SystemClock.elapsedRealtime() - chrono.getBase();
 
 
-                time = elapsedMillis/1000;
+                time = elapsedMillis / 1000;
+                if (hint) {
+                    if (time - timeb == htime) {
+                        for (int i = 0; i < lines; i++) {
+                            String txt = btn[i].getText().toString();
+                            if (Integer.parseInt(txt) == a) {
+                                light(btn[i]);
+                            }
+                        }
+                        ;
 
-                if (time - timeb == 5) {
-                  for(int i = 0; i<lines; i++){
-                      String txt = btn[i].getText().toString();
-                      if (Integer.parseInt(txt)==a){
-                      light(btn[i]);
-                      }
-
-                  }
-                };
+                    }
+                }
+                ;
             }
         });
         chrono.start();
