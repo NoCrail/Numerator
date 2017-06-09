@@ -9,4 +9,5 @@
     <string name="ColorCheck">Включить цвета</string>
     <string name="HideCheck">Убирать нажатые</string>
     <string name="RotationCheck">Перемешивать</string>
+    <string name="Lines">Строк</string>
 </resources>

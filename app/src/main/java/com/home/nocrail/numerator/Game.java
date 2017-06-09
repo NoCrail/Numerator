@@ -18,6 +18,7 @@ import java.util.Random;
 import static android.R.attr.id;
 import static com.home.nocrail.numerator.MainActivity.color;
 import static com.home.nocrail.numerator.MainActivity.hide;
+import static com.home.nocrail.numerator.MainActivity.lines;
 
 
 public class Game extends AppCompatActivity {
@@ -30,7 +31,7 @@ public class Game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
+        lines = lines * 5 ;
         final Button btn[] = {(Button)findViewById(R.id.but1), (Button)findViewById(R.id.but2),
                 (Button)findViewById(R.id.but3), (Button)findViewById(R.id.but4),
                 (Button)findViewById(R.id.but5), (Button)findViewById(R.id.but6),
@@ -52,6 +53,12 @@ public class Game extends AppCompatActivity {
                 (Button)findViewById(R.id.but38), (Button)findViewById(R.id.but39),
                 (Button)findViewById(R.id.but40), (Button)findViewById(R.id.but41),
         };
+
+        for (int i = lines; i<btn.length; i++){
+          btn[i].setVisibility(View.INVISIBLE);
+
+        };
+
 
         final Chronometer chrono = (Chronometer)findViewById(R.id.chrono);
 
@@ -79,12 +86,12 @@ public class Game extends AppCompatActivity {
                     a++;
                 }
 
-                if(a>30){
+                if(a>lines){
                     chrono.stop();
                     AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
                     builder.setTitle(R.string.end);
 
-                    builder.setMessage(String.valueOf(time));
+                    builder.setMessage("Время " + String.valueOf(time));
                     builder.setCancelable(false);
                     builder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
@@ -110,7 +117,7 @@ public class Game extends AppCompatActivity {
 
 
         ArrayList<Byte> kek = new ArrayList<>();
-        for(Byte i = 1; i<=btn.length; i++){
+        for(Byte i = 1; i<=lines; i++){
             kek.add(i-1, i);
 
         };
@@ -118,7 +125,7 @@ public class Game extends AppCompatActivity {
             btn[i].setOnClickListener(click);
         };
         Random rand = new Random();
-        for(Byte i = 0; i<btn.length; i++){
+        for(Byte i = 0; i<lines; i++){
             if (color){
                 btn[i].setTextColor(Color.argb(255, rand.nextInt(255), rand.nextInt(255), rand.nextInt(255)));
             }
