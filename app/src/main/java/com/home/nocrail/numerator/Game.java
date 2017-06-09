@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.style.BackgroundColorSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static android.R.attr.colorBackground;
 import static android.R.attr.id;
 import static com.home.nocrail.numerator.MainActivity.color;
 import static com.home.nocrail.numerator.MainActivity.hide;
@@ -25,6 +27,7 @@ public class Game extends AppCompatActivity {
 
     public int a = 1;
     public long time;
+    public long timeb = 0;
 
 
     @Override
@@ -66,7 +69,19 @@ public class Game extends AppCompatActivity {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 long elapsedMillis = SystemClock.elapsedRealtime()-chrono.getBase();
+
+
                 time = elapsedMillis/1000;
+
+                if (time - timeb == 5) {
+                  for(int i = 0; i<lines; i++){
+                      String txt = btn[i].getText().toString();
+                      if (Integer.parseInt(txt)==a){
+                      light(btn[i]);
+                      }
+
+                  }
+                };
             }
         });
         chrono.start();
@@ -75,6 +90,7 @@ public class Game extends AppCompatActivity {
         View.OnClickListener click = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                timeb = time;
                 String ili = ((Button) v).getText().toString();
                 if(Integer.parseInt(ili)==a){
                     if(hide){
@@ -107,13 +123,9 @@ public class Game extends AppCompatActivity {
 
 
 
-       Button delete = (Button)findViewById(R.id.delete);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                a = 30;
-            }
-        });
+
+
+
 
 
         ArrayList<Byte> kek = new ArrayList<>();
@@ -141,7 +153,12 @@ public class Game extends AppCompatActivity {
 
 
     }
+    public void light (View v) {
 
+        v.setBackgroundColor(Color.YELLOW);
+
+
+    };
 
 
 }
