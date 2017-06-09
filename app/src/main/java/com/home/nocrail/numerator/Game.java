@@ -40,6 +40,7 @@ public class Game extends AppCompatActivity {
     public SharedPreferences sp;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
